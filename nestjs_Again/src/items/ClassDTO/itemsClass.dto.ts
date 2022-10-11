@@ -1,4 +1,4 @@
-import { IsArray, IsDecimal, IsEmpty, IsNotEmpty, IsNumber, IsNumberString, IsString } from "class-validator";
+import { IsArray, IsDecimal, IsEmpty, isNotEmpty, IsNotEmpty, IsNumber, isNumberString, IsNumberString, IsString } from "class-validator";
 
 
 
@@ -9,21 +9,22 @@ export class ItemClassDto
   id:number;
 
   @IsString()
+  @IsNotEmpty()
   user_id: string;
 
-  //@IsNotEmpty()
+  @IsNotEmpty()
   keywords: [];
 
-  //@IsNotEmpty()
+  @IsNotEmpty()
   description: string;
   
   //i have to set to a image url
   //image: string;
   
-  //@IsNumberString()
+ //@IsNumberString()
   lat:number;
   
- // @IsDecimal()
+  //@IsDecimal()
   lon: number;
 
   

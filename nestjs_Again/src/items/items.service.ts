@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { NotFoundError } from 'rxjs';
 import { ItemClassDto } from './ClassDTO/itemsClass.dto';
 import { Items_Interface } from './items-Model/items-model';
 
@@ -31,7 +32,7 @@ export class ItemsService {
 
         let item = this.findItems();
         if(user_id) item = this.items.filter(item=> item.user_id === user_id );
-        
+
         return item;
     }
 
@@ -40,11 +41,16 @@ export class ItemsService {
     }
 
     findItemsById(id:number):Items_Interface{
-        return this.items.find(item => item.id === id);
+        const item_found = this.items.find(item => item.id === id);
+        if(!item_found){
+            throw new NotFoundException();
+        }
+        return item_found;
     }
 
     removeItemById(id:number){
-        this.items = this.items.filter(items => items.id !== id); 
+        this.items.filter(items => items.id !== id); 
+      
     }
 
     CreateItem(Create_ItemClassDto : ItemClassDto):Items_Interface{

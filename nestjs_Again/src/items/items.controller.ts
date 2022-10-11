@@ -26,28 +26,28 @@ export class ItemsController {
     @Get('/item/:id')
     findItemByID(@Param('id', ParseIntPipe) id : number):Items_Interface{
        const item = this.ItemsService.findItemsById(Number(id));
-       //console.log(typeof id); 
-       if(!item)
-       throw new HttpException('Item Not Found!', HttpStatus.NOT_FOUND);
-       else{
-       new HttpException('Item found!', HttpStatus.OK); 
-       return item;}
+       return item;
     }
        //dto --> according to the doc. defines how the data is sent over the network, we want to ensure that the reveived data matches this DTO
     @Post('/item')
     @UsePipes(ValidationPipe)
-    createItem(@Body() Create_ItemClassDto: ItemClassDto ){
-        var createdIte = this.ItemsService.CreateItem(Create_ItemClassDto);
-        if(createdIte.user_id != null){
-        //console.log(HttpStatus.CREATED);
-        return createdIte;
-       }
-       else throw new HttpException('Item Not created!', HttpStatus.METHOD_NOT_ALLOWED);
-       }
+    createItem(@Body() Create_Item: ItemClassDto ){
+
+        var createdIte = this.ItemsService.CreateItem(Create_Item);
+
+if(createdIte.user_id != null){
+   //console.log(HttpStatus.CREATED);
+   return createdIte;
+  }
+  else throw new HttpException('Item Not created!', HttpStatus.METHOD_NOT_ALLOWED);
+  }
+       
 
     @Delete('/item/:id')
+    @UsePipes(ValidationPipe)
     removeItemById(@Param('id') id: number):void{
-      const deletedItem = this.ItemsService.removeItemById(id);
+
+       this.ItemsService.removeItemById(id);
        throw new HttpException('Item Deleted!', HttpStatus.NO_CONTENT);
     }
 }
