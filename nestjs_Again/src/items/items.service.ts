@@ -5,7 +5,7 @@ import { Items_Interface } from './items-Model/items-model';
 
 @Injectable()
 export class ItemsService {
-    // test values
+
     private items: Items_Interface[] = [];
     private auto_id=1;
     
@@ -13,22 +13,29 @@ export class ItemsService {
         var id = this.auto_id++;
         return id;
     }
+
     iso_date(): string{
         //https://stackoverflow.com/questions/1531093/how-do-i-get-the-current-date-in-javascript
         let today = new Date().toISOString().slice(0, 10)
         return today;
-
     }
-
-    
 
     helloPage():string{
      const Messagv = "<html><body>Hello world</body></html>";
         return  Messagv;
-     
     }
 
-    findAllItems():Items_Interface[]{
+    findFilteredItems(getItemFilter: ItemClassDto):Items_Interface[]{
+
+        const {user_id} = getItemFilter; 
+
+        let item = this.findItems();
+        if(user_id) item = this.items.filter(item=> item.user_id === user_id );
+        
+        return item;
+    }
+
+    findItems():Items_Interface[]{
         return this.items;
     }
 
@@ -38,8 +45,8 @@ export class ItemsService {
 
     removeItemById(id:number){
         this.items = this.items.filter(items => items.id !== id); 
-      
     }
+
     CreateItem(Create_ItemClassDto : ItemClassDto):Items_Interface{
         //distracting the dto object
         const{user_id,keywords,description,lat,lon} = Create_ItemClassDto;
@@ -56,5 +63,6 @@ export class ItemsService {
      
          this.items.push(temClassDto)
          return temClassDto;
+         
     }
 }

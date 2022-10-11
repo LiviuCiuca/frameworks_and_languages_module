@@ -8,7 +8,7 @@ export class ItemClassDto
   //@IsNumberString()
   id:number;
 
-  //@IsString()
+  @IsString()
   user_id: string;
 
   //@IsNotEmpty()
