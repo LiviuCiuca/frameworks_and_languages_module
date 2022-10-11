@@ -17,7 +17,7 @@ export class ItemsController {
     createItem(@Body() Create_ItemClassDto: ItemClassDto ){
         var createdIte = this.ItemsService.CreateItem(Create_ItemClassDto);
         if(createdIte.user_id != null){
-         console.log(HttpStatus.CREATED);
+         //console.log(HttpStatus.CREATED);
         return createdIte;
     }
         else throw new HttpException('Item Not created!', HttpStatus.METHOD_NOT_ALLOWED);
@@ -35,25 +35,17 @@ export class ItemsController {
     }
 
     @Get('/item/:id')
-    findItemByID(@Param('id') id : number):Items_Interface{
+    findItemByID(@Param('id', ParseIntPipe) id : number):Items_Interface{
        const item = this.ItemsService.findItemsById(Number(id));
-       console.log(typeof id); 
+       //console.log(typeof id); 
        if(item)
        return item;
        else throw new HttpException('Item Not Found!', HttpStatus.NOT_FOUND);
     }
 
     @Delete('/item/:id')
-    removeItemById(@Param('id',ParseIntPipe) id: number){
-       const item = this.ItemsService.removeItemById(id);
-       // console.log(typeof id); 
-        HttpStatus.NO_CONTENT;
-        // if(item != null){
-        
-        // }
-        //  else 
-        //  throw new HttpException('Item Not Found!', HttpStatus.NOT_FOUND); 
-         }
-
+    removeItemById(@Param('id') id: number){
+       this.ItemsService.removeItemById(id);
+      throw new HttpException('Item Deleted!', HttpStatus.NO_CONTENT); 
+    }
 }
-

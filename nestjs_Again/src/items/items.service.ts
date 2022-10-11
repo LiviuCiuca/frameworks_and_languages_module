@@ -13,6 +13,12 @@ export class ItemsService {
         var id = this.auto_id++;
         return id;
     }
+    iso_date(): string{
+        //https://stackoverflow.com/questions/1531093/how-do-i-get-the-current-date-in-javascript
+        let today = new Date().toISOString().slice(0, 10)
+        return today;
+
+    }
 
     
 
@@ -26,8 +32,8 @@ export class ItemsService {
         return this.items;
     }
 
-    findItemsById(Id:number):Items_Interface{
-        return this.items.find(item => item.id === Id);
+    findItemsById(id:number):Items_Interface{
+        return this.items.find(item => item.id === id);
     }
 
     removeItemById(id:number){
@@ -45,6 +51,7 @@ export class ItemsService {
         description,
         lat,
         lon,
+        date_from: this.iso_date(),
     };
      
          this.items.push(temClassDto)

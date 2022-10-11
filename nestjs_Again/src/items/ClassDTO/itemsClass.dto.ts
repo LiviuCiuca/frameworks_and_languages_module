@@ -28,7 +28,7 @@ export class ItemClassDto
 
   
 //   @IsDate()
-//   date_from: VarDate;
+   date_from: Date;
   }
  
   
