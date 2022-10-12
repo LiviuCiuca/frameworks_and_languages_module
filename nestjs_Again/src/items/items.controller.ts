@@ -10,7 +10,7 @@ export class ItemsController {
 
     @Get('')
     firstPage(){
-        var testtt = this.ItemsService.helloPage();
+       var testtt = this.ItemsService.helloPage();
        return testtt;
     }
 
@@ -28,23 +28,14 @@ export class ItemsController {
        const item = this.ItemsService.findItemsById(Number(id));
        return item;
     }
-       //dto --> according to the doc. defines how the data is sent over the network, we want to ensure that the reveived data matches this DTO
+       //dto --> according to the doc. defines how the data is sent over the network, we want to ensure that the received data matches this DTO
     @Post('/item')
     @UsePipes(ValidationPipe)
     createItem(@Body() Create_Item: ItemClassDto ){
-
-        var createdIte = this.ItemsService.CreateItem(Create_Item);
-
-if(createdIte.user_id != null){
-   //console.log(HttpStatus.CREATED);
-   return createdIte;
-  }
-  else throw new HttpException('Item Not created!', HttpStatus.METHOD_NOT_ALLOWED);
-  }
-       
+       return this.ItemsService.CreateItem(Create_Item);
+    }
 
     @Delete('/item/:id')
-    @UsePipes(ValidationPipe)
     removeItemById(@Param('id') id: number):void{
 
        this.ItemsService.removeItemById(id);

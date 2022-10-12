@@ -1,7 +1,7 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { NotFoundError } from 'rxjs';
+import { HttpException, Injectable, MethodNotAllowedException, NotFoundException, HttpStatus } from '@nestjs/common';
 import { ItemClassDto } from './ClassDTO/itemsClass.dto';
 import { Items_Interface } from './items-Model/items-model';
+
 
 
 @Injectable()
@@ -49,8 +49,13 @@ export class ItemsService {
     }
 
     removeItemById(id:number){
-        this.items.filter(items => items.id !== id); 
-      
+            
+        this.items.filter(items => items.id !== id);
+        const idx = this.items.indexOf(this.findItemsById(id))
+        if(idx >  1)
+        throw new HttpException('Item Deleted!', HttpStatus.NO_CONTENT);
+        else 
+        throw new HttpException('Item not found!', HttpStatus.NOT_FOUND);
     }
 
     CreateItem(Create_ItemClassDto : ItemClassDto):Items_Interface{
@@ -66,9 +71,12 @@ export class ItemsService {
         lon,
         date_from: this.iso_date(),
     };
-     
-         this.items.push(temClassDto)
-         return temClassDto;
-         
+    try{
+        if(temClassDto.user_id != null){
+            this.items.push(temClassDto)
+            return temClassDto;
+        }} catch{
+            throw new MethodNotAllowedException();
+        }
     }
 }
