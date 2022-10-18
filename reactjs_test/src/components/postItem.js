@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 
 
+
  export class  PostItems extends Component {
  constructor(props){
   super(props);
@@ -12,8 +13,8 @@ import React,{Component} from "react";
     lon:parseFloat(''),
     lat:parseFloat('')
   }
+}
 
-};
  changeHandler = (e) => {
   this.setState({[e.target.name]: e.target.value})
  }
@@ -21,6 +22,13 @@ import React,{Component} from "react";
  submitHandler = (e) =>{
   e.preventDefault()
   console.log(this.state)
+
+  fetch('https://8000-liviuciuca-frameworksan-ghwuf4drqno.ws-eu71.gitpod.io/item', {   method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({  })
+ })
+  .then(response => response.json())
+  .then(data => this.changeHandler);
  }
 render(){  
   const {user_id,keywords,description,lat,lon} = this.state
@@ -45,12 +53,12 @@ render(){
          </div>
 
          <div className="item-box">
-            <input type="text" name="lat" value={lat} onChange={this.changeHandler}/>
+            <input type="number" name="lat" value={lat} onChange={this.changeHandler}/>
             <label>Lat:</label>
           </div>
 
          <div className="item-box">
-            <input type="text" name="lon" value={lon} onChange={this.changeHandler}/>
+            <input type="number" name="lon" value={lon} onChange={this.changeHandler}/>
             <label>Lon:</label>
          </div>
 

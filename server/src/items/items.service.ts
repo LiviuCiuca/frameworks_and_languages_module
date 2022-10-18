@@ -11,7 +11,6 @@ export class ItemsService {
     private auto_id=1;
 
     auto_Id(){
-
         var id = this.auto_id++;
         return id;
     }
@@ -50,13 +49,7 @@ export class ItemsService {
     }
 
     removeItemById(id:number){
-            
-        this.items.filter(items => items.id !== id);
-        // const idx = this.items.indexOf(this.findItemsById(id))
-        // if(idx < 0)
-        // new HttpException('Item Deleted!', HttpStatus.NO_CONTENT);
-        // else 
-        // throw new HttpException('Item not found!', HttpStatus.NOT_FOUND);
+        this.items = this.items.filter(items => items.id !== id);
     }
 
     CreateItem(Create_ItemClassDto : ItemClassDto):Items_Interface{

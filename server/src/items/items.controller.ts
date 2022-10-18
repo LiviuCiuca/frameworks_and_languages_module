@@ -36,10 +36,8 @@ export class ItemsController {
     }
 
     @Delete('/item/:id')
-    removeItemById(@Param('id') id: number):void{
-
-        var yy = this.ItemsService.removeItemById(id);
-        //if (yy.length === 0)
-       throw new HttpException('Item Deleted!', HttpStatus.NO_CONTENT);
+    removeItemById(@Param('id',ParseIntPipe) id: number):void{
+      this.ItemsService.removeItemById(id);
+      throw new HttpException('Item Deleted!', HttpStatus.NO_CONTENT);
     }
 }

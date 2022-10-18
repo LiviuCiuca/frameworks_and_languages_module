@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { Items } from './components/Items';
+import { Items } from './components/getItems';
 import reportWebVitals from './reportWebVitals';
 import { PostItems } from './components/postItem';
+import { DeleteItem } from './components/deleteItem';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Items />
     <PostItems />
+    
   </React.StrictMode>
 );
 
