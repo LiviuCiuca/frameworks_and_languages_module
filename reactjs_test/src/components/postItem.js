@@ -1,4 +1,6 @@
+import { data } from "jquery";
 import React,{Component} from "react";
+import { Items } from "./getItems";
 
 
 
@@ -20,21 +22,23 @@ import React,{Component} from "react";
  }
 
  submitHandler = (e) =>{
-  e.preventDefault()
-  console.log(this.state)
+  //e.preventDefault()
 
   fetch('https://8000-liviuciuca-frameworksan-ghwuf4drqno.ws-eu71.gitpod.io/item', {   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({  })
+  body: JSON.stringify(this.state)
  })
   .then(response => response.json())
-  .then(data => this.changeHandler);
+  .then(data => this.changeHandler)
+  
  }
-render(){  
+
+render(){  <Items data={this.submitHandler}/>
   const {user_id,keywords,description,lat,lon} = this.state
     return (
     <div className="first_class">
         <h2>Input!</h2>
+        
       <form onSubmit={this.submitHandler}>
 
          <div className="item-box">
@@ -74,4 +78,3 @@ render(){
       );
     }
   }
-  
