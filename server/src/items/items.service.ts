@@ -55,7 +55,7 @@ export class ItemsService {
         //     throw new NotFoundException();
         // } 
         // else{
-       this.items.filter(items => items.id !== id);
+       this.items = this.items.filter(items => items.id !== id);
       // throw new HttpException('item deleted', HttpStatus.NO_CONTENT)
    // }
     }

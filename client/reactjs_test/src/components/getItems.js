@@ -8,7 +8,7 @@ export const Items = (submitHandler) => {
   const [status, setStatus] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const URL = 'https://8000-liviuciuca-frameworksan-ghwuf4drqno.ws-eu71.gitpod.io'
+  const URL = 'https://8000-liviuciuca-frameworksan-ghwuf4drqno.ws-eu72.gitpod.io'
 
   
   const getItems = () => {
@@ -17,7 +17,7 @@ export const Items = (submitHandler) => {
       .then(data => {
         setItems(data)
         console.log(data);
-  setDelete_btn(false);
+      setDelete_btn(false);
       setSelected(0);
       });
   };
@@ -31,6 +31,7 @@ export const Items = (submitHandler) => {
       if (!response.ok) {
           // get error message from body or default to response status
           const error = (data && data.message) || response.status;
+          console.log(error);
           return Promise.reject(error);
       }
 

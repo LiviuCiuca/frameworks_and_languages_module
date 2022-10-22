@@ -1,4 +1,3 @@
-import { data } from "jquery";
 import React,{Component} from "react";
 import { Items } from "./getItems";
 
@@ -24,7 +23,7 @@ import { Items } from "./getItems";
  submitHandler = (e) =>{
   //e.preventDefault()
 
-  fetch('https://8000-liviuciuca-frameworksan-ghwuf4drqno.ws-eu71.gitpod.io/item', {   method: 'POST',
+  fetch('https://8000-liviuciuca-frameworksan-ghwuf4drqno.ws-eu72.gitpod.io/item', {   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(this.state)
  })
