@@ -1,4 +1,5 @@
 import { HttpException, Injectable, MethodNotAllowedException, NotFoundException, HttpStatus } from '@nestjs/common';
+import { IsEmpty } from 'class-validator';
 import { ItemClassDto } from './ClassDTO/itemsClass.dto';
 import { Items_Interface } from './items-Model/items-model';
 
@@ -49,7 +50,14 @@ export class ItemsService {
     }
 
     removeItemById(id:number){
-        this.items = this.items.filter(items => items.id !== id);
+        //const found = this.findItemsById(id)
+        // if (isNaN(found.id)){
+        //     throw new NotFoundException();
+        // } 
+        // else{
+       this.items.filter(items => items.id !== id);
+      // throw new HttpException('item deleted', HttpStatus.NO_CONTENT)
+   // }
     }
 
     CreateItem(Create_ItemClassDto : ItemClassDto):Items_Interface{
@@ -66,7 +74,7 @@ export class ItemsService {
         date_from: this.iso_date(),
     };
     try{
-        if(temClassDto.user_id != null){
+        if(temClassDto.user_id.length){
             this.items.push(temClassDto)
             return temClassDto;
         }} catch{

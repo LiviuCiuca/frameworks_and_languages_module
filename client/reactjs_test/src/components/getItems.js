@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { PostItems } from "./postItem";
 
 export const Items = (submitHandler) => {
 
@@ -18,8 +17,8 @@ export const Items = (submitHandler) => {
       .then(data => {
         setItems(data)
         console.log(data);
-        setDelete_btn(false);
-        setSelected(0);
+  setDelete_btn(false);
+      setSelected(0);
       });
   };
 
@@ -64,8 +63,11 @@ export const Items = (submitHandler) => {
         }}>
         {item.user_id}
       </summary>
-        <p>{item.keywords}</p>
-        <p>{item.description}</p>
+        <p>Keywords : {item.keywords}</p>
+        <p>Description: {item.description}</p>
+        <p>Lat: {item.lat}</p>
+        <p>Lon: {item.lon}</p>
+        <p>Date: {item.date_from}</p>
       </details>  
     </li>
     );
