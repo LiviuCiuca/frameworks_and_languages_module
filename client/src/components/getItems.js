@@ -57,7 +57,7 @@ export const Items = (submitHandler) => {
   //displaying the items in a list, clicking on them sets the selected item
    const list_items = items.map(item =>  
     <li key={item.id}>
-     <details>
+     <details data-field="id">
       <summary onClick={() =>{ 
         setSelected(selected ? 0:item.id);
         console.log(selected);
@@ -77,7 +77,7 @@ export const Items = (submitHandler) => {
   return (
     <div>
       <h1> freecycle</h1>
-      <button onClick={() =>{
+      <button data-action="delete" onClick={() =>{
         setDelete_btn(delete_btn ? false : true);
       }}>
         delete

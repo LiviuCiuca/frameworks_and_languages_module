@@ -21,7 +21,7 @@ import { Items } from "./getItems";
   this.setState({[e.target.name]: e.target.value})
  }
 
-   submitHandler = (e) =>{
+   create_item = (e) =>{
   //e.preventDefault()
 
   fetch('https://8000-liviuciuca-frameworksan-ghwuf4drqno.ws-eu72.gitpod.io/item', {   method: 'POST',
@@ -33,13 +33,13 @@ import { Items } from "./getItems";
   
  }
 //line 36 exports handler to add dependency for useEffect in getItems file
-render(){  <Items data={this.submitHandler}/>
+render(){  <Items data={this.create_item}/>
   const {user_id,keywords,description,image,lat,lon} = this.state
     return (
     <div className="first_class">
         <h2>Input!</h2>
         
-        <form action="create_item" onSubmit={this.submitHandler}>
+        <form onSubmit={this.create_item}>
 
          <div className="item-box">
             <input type="text" name="user_id" value={user_id} onChange={this.changeHandler}/>
@@ -72,8 +72,8 @@ render(){  <Items data={this.submitHandler}/>
          </div>
 
         <div className="create_item">
-            <button name="create_item"  type="submit">
-              create_item
+            <button name="submitBtn"  type="submit" data-action="create_item">
+              Submit
             </button>
         </div>
       </form>
