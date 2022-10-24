@@ -63,12 +63,20 @@ export const Items = (submitHandler) => {
         console.log(selected);
         }}>
         {item.user_id}
+        <p/>
+        <button data-action="delete" onClick={() =>{
+        setDelete_btn(delete_btn ? false : true);
+        }}>
+          Delete, you have selected {selected}
+        </button>
       </summary>
         <p>Keywords : {item.keywords}</p>
         <p>Description: {item.description}</p>
         <p>Lat: {item.lat}</p>
         <p>Lon: {item.lon}</p>
         <p>Date: {item.date_from}</p>
+
+        
       </details>  
     </li>
     );
@@ -77,14 +85,10 @@ export const Items = (submitHandler) => {
   return (
     <div>
       <h1> freecycle</h1>
-      <button data-action="delete" onClick={() =>{
-        setDelete_btn(delete_btn ? false : true);
-      }}>
-        delete
-      </button>
-      <ul>
+        
+       <ul>
         {list_items}
-      </ul>
+       </ul>
      
   </div>
 
