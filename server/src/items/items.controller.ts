@@ -34,7 +34,8 @@ export class ItemsController {
     @Post('/item')
     @UsePipes(ValidationPipe)
     createItem(@Body() Create_Item: ItemClassDto ):Items_Interface{
-       return this.ItemsService.CreateItem(Create_Item);
+      return this.ItemsService.CreateItem(Create_Item);
+     
     }
 
     @Delete('/item/:id')

@@ -62,13 +62,14 @@ export class ItemsService {
 
     CreateItem(Create_ItemClassDto : ItemClassDto):Items_Interface{
         //distracting the dto object
-        const{user_id,keywords,description,lat,lon} = Create_ItemClassDto;
+        const{user_id,keywords,description,image,lat,lon} = Create_ItemClassDto;
 
         const temClassDto : Items_Interface = {
         id : this.auto_Id(),
         user_id,
         keywords,
         description,
+        image,
         lat,
         lon,
         date_from: this.iso_date(),

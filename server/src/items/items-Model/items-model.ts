@@ -3,6 +3,7 @@ export interface Items_Interface{
     user_id:string;
     keywords:[];
     description:string;
+    image:string;
     lat:number;
     lon:number;
     date_from: string;

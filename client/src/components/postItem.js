@@ -11,6 +11,7 @@ import { Items } from "./getItems";
     user_id:'',
     keywords:'',
     description:'',
+    image:'',
     lon:parseFloat(''),
     lat:parseFloat('')
   }
@@ -20,7 +21,7 @@ import { Items } from "./getItems";
   this.setState({[e.target.name]: e.target.value})
  }
 
- submitHandler = (e) =>{
+   submitHandler = (e) =>{
   //e.preventDefault()
 
   fetch('https://8000-liviuciuca-frameworksan-ghwuf4drqno.ws-eu72.gitpod.io/item', {   method: 'POST',
@@ -31,14 +32,14 @@ import { Items } from "./getItems";
   .then(data => this.changeHandler)
   
  }
-
+//line 36 exports handler to add dependency for useEffect in getItems file
 render(){  <Items data={this.submitHandler}/>
-  const {user_id,keywords,description,lat,lon} = this.state
+  const {user_id,keywords,description,image,lat,lon} = this.state
     return (
     <div className="first_class">
         <h2>Input!</h2>
         
-      <form onSubmit={this.submitHandler}>
+        <form action="create_item" onSubmit={this.submitHandler}>
 
          <div className="item-box">
             <input type="text" name="user_id" value={user_id} onChange={this.changeHandler}/>
@@ -56,6 +57,11 @@ render(){  <Items data={this.submitHandler}/>
          </div>
 
          <div className="item-box">
+            <input type="text" name="image" value={image} onChange={this.changeHandler}/>
+            <img src={image}/>
+         </div>
+
+         <div className="item-box">
             <input type="number" name="lat" value={lat} onChange={this.changeHandler}/>
             <label>Lat:</label>
           </div>
@@ -65,9 +71,9 @@ render(){  <Items data={this.submitHandler}/>
             <label>Lon:</label>
          </div>
 
-        <div className="button-form">
-            <button type="submit">
-            Submit
+        <div className="create_item">
+            <button name="create_item"  type="submit">
+              create_item
             </button>
         </div>
       </form>

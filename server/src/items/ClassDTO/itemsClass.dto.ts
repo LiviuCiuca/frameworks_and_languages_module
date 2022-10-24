@@ -19,7 +19,7 @@ export class ItemClassDto
   description: string;
   
   //i have to set to a image url
-  //image: string;
+  image: string;
   
  //@IsNumberString()
   lat:number;

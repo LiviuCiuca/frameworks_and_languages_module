@@ -76,11 +76,11 @@ export const Items = (submitHandler) => {
 
   return (
     <div>
-      <h1> heyYOoo</h1>
+      <h1> freecycle</h1>
       <button onClick={() =>{
         setDelete_btn(delete_btn ? false : true);
       }}>
-        Delete item {selected}?
+        delete
       </button>
       <ul>
         {list_items}
