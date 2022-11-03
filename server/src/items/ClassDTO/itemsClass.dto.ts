@@ -1,7 +1,7 @@
-import { IsArray, IsDecimal, IsEmpty, isNotEmpty, IsNotEmpty, IsNumber, isNumberString, IsNumberString, IsString } from "class-validator";
+import {  IsNotEmpty, IsString } from "class-validator";
 
 
-
+//https://docs.nestjs.com/techniques/validation
 //added validation
 export class ItemClassDto
  {
@@ -18,7 +18,7 @@ export class ItemClassDto
   @IsNotEmpty()
   description: string;
   
-  //i have to set to a image url
+  
   image: string;
   
  //@IsNumberString()

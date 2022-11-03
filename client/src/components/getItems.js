@@ -17,6 +17,8 @@ export const Items = (submitHandler) => {
       .then(data => {
         setItems(data)
         console.log(data);
+
+        // resets the states 
       setDelete_btn(false);
       setSelected(0);
       });
@@ -62,12 +64,11 @@ export const Items = (submitHandler) => {
         setSelected(selected ? 0:item.id);
         console.log(selected);
         }}>
-        {item.user_id}
-        <p/>
+        {item.user_id}<br/>
         <button data-action="delete" onClick={() =>{
         setDelete_btn(delete_btn ? false : true);
         }}>
-          Delete, you have selected {selected}
+          Delete
         </button>
       </summary>
         <p>Keywords : {item.keywords}</p>

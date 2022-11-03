@@ -28,17 +28,16 @@
 //     }, []);
 
 //     return (
-//         <div className="card text-center m-3">
-//             <h5 className="card-header">DELETE Request with Error Handling</h5>
-//             <div className="card-body">
+//         <div className="deleteClass">
+     
 //             <button onClick={() =>{
 //                 setDelete_btn(delete_btn ? false : true);
 //             }}>
 //                   Delete
 //             </button>
-//  
+ 
 //             <Items detele_btn={delete_btn}/>
-//             </div>
+           
 
 //         </div>
 //     );
