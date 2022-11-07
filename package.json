@@ -5,6 +5,7 @@
     "cypress": "^10.10.0",
     "id-auto-increment": "^1.0.1",
     "jquery": "^3.6.1",
-    "jquery-ui-dist": "^1.13.2"
+    "jquery-ui-dist": "^1.13.2",
+    "purecss": "^3.0.0"
   }
 }

@@ -13,10 +13,11 @@ export class PostItems extends Component {
       description: '',
       image: '',
       lon: parseFloat(''),
-      lat: parseFloat('')
+      lat: parseFloat(''),
     }
   }
-
+  
+  //adding values from text`boxes to my state proprieties
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value })
   }
@@ -24,7 +25,7 @@ export class PostItems extends Component {
   submitHandler = (e) => {
     //e.preventDefault()
 
-    fetch('https://8000-liviuciuca-frameworksan-ghwuf4drqno.ws-eu72.gitpod.io/item', {
+    fetch('https://8000-liviuciuca-frameworksan-ghwuf4drqno.ws-eu74.gitpod.io/item', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(this.state)
@@ -37,6 +38,7 @@ export class PostItems extends Component {
   //line 36 exports handler to add dependency for useEffect in getItems file
   render() {
     <Items data={this.submitHandler} />
+    
     const { user_id, keywords, description, image, lat, lon } = this.state
     return (
       <div className="first_class">
@@ -56,12 +58,12 @@ export class PostItems extends Component {
 
           <div className="item-box">
             <input type="text" name="description" value={description} onChange={this.changeHandler} />
-            <label>Description</label>
+            <label>Description:</label>
           </div>
 
           <div className="item-box">
             <input type="text" name="image" value={image} onChange={this.changeHandler} />
-            <img src={image} />
+            <label>Image:</label>
           </div>
 
           <div className="item-box">

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import 'purecss/build/pure.css'
 import { Items } from './components/getItems';
 import reportWebVitals from './reportWebVitals';
 import { PostItems } from './components/postItem';

@@ -79,7 +79,7 @@ export class ItemsService {
     };
     // if the object array is empty then return 405 status code
     // if not empty push the new item to array  
-        if(Object.keys(temClassDto).length === 0){
+        if(isNaN(temClassDto.lon)){
             throw new MethodNotAllowedException();
         }
             this.items.push(temClassDto)
