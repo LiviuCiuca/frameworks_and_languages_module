@@ -25,7 +25,7 @@ export class PostItems extends Component {
   submitHandler = (e) => {
     //e.preventDefault()
 
-    fetch('https://8000-liviuciuca-frameworksan-ghwuf4drqno.ws-eu74.gitpod.io/item', {
+    fetch('https://8000-liviuciuca-frameworksan-ghwuf4drqno.ws-eu75.gitpod.io/item', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(this.state)
@@ -41,10 +41,11 @@ export class PostItems extends Component {
     
     const { user_id, keywords, description, image, lat, lon } = this.state
     return (
-      <div className="first_class">
-        <h2>Input!</h2>
+     
+        <div className="first_class">
+          <h1>freecycle</h1>
 
-        <form onSubmit={this.submitHandler}>
+        <form class="pure-form" onSubmit={this.submitHandler}>
 
           <div className="item-box">
             <input type="text" name="user_id" value={user_id} onChange={this.changeHandler} />
@@ -76,13 +77,14 @@ export class PostItems extends Component {
             <label>Lon:</label>
           </div>
 
-          <div className="submitHandler">
+          <div id="submit" class="pure-button">
             <button name="submitBtn" type="submit" data-action="create_item">
               Submit
             </button>
           </div>
         </form>
       </div>
+     
 
 
     );

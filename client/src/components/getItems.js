@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 //npm install purecss --save
+
 export const Items = (submitHandler) => {
 
   const [items, setItems] = useState([]);
@@ -10,7 +11,7 @@ export const Items = (submitHandler) => {
  
   const URL_API = (new URLSearchParams(document.location.search)).get("api")
   console.log(URL_API);
-  const URL = 'https://8000-liviuciuca-frameworksan-ghwuf4drqno.ws-eu74.gitpod.io'
+  const URL = 'https://8000-liviuciuca-frameworksan-ghwuf4drqno.ws-eu75.gitpod.io'
 
   
   const getItems = () => {
@@ -56,14 +57,14 @@ export const Items = (submitHandler) => {
   // https://beta.reactjs.org/learn // scrolling down to use state and rendering list
   //displaying the items in a list, clicking on them sets the selected item
   const displayItems = items.map(item =>  
-    <li class="pure-u-1-3" key={item.id}>
-     <details data-field="id">
+    <li class="pure-u-1 pure-u-md-1-5 pure-u-sm-2-5 "  key={item.id}>
+     <details className="input" data-field="id">
         <summary onClick={() => {
           setSelected(selected ? 0 : item.id);
           }}>
           {item.user_id}
-          <div class="pure-u-1-12"/>
-            <button data-action="delete" onClick={() =>{
+          <div class="pure-u-1"/>
+            <button class="pure-button" data-action="delete" onClick={() =>{
              setDelete_btn(delete_btn ? false : true);
             }}>
              Delete
@@ -73,15 +74,15 @@ export const Items = (submitHandler) => {
           <p>Description: {item.description}</p>
           <p>Lat: {item.lat}</p>
           <p>Lon: {item.lon}</p>
-          <img className="pure-img" src={item.image} />
+          <img class="pure-img" src={item.image} />
           <p>Date: {item.date_from}</p>      
       </details>  
     </li>
     );
 
   return (
-  <div>
-    <h1> freecycle </h1>
+  <div class="pure-g">
+    <h2> Output </h2>
       <ul>
         {displayItems}
       </ul>  
