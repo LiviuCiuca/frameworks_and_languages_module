@@ -72,15 +72,15 @@ export const Items = (submitHandler) => {
           setSelected(selected ? 0 : item.id);
           }}>
           {item.user_id}
-          <div />
+          <p />
             <button className="pure-button" data-action="delete" onClick={() =>{
              setDelete_btn(delete_btn ? false : true);
             }}>
              Delete
             </button>
+            <p>Description: {item.description}</p>
         </summary>
           <p>Keywords : {item.keywords}</p>
-          <p>Description: {item.description}</p>
           <p>Lat: {item.lat}</p>
           <p>Lon: {item.lon}</p>
           <img class="pure-img" alt="altProp" src={item.image} />
