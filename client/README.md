@@ -25,7 +25,7 @@ $ make run
 ```
 
 ## Test
-[When choosing testing tools, it is worth considering a few tradeoffs:
+    [When choosing testing tools, it is worth considering a few tradeoffs:
     Iteration speed vs Realistic environment
     How much to mock?]
 ```bash
@@ -42,5 +42,7 @@ $ make test_client
 # click "delete" button to delete the desired item
 
 # automatically:
-# use cypress, and watch the recording.
+# use cypress
+$ make test_client
+# and watch the recording, found in test_client --> cypress --> recordings folder
 ```

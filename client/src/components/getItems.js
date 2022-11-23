@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-//npm install purecss --save
+
 
 export const Items = (submitHandler) => {
 
@@ -9,9 +9,18 @@ export const Items = (submitHandler) => {
   const [status, setStatus] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
  
-  const URL_API = (new URLSearchParams(document.location.search)).get("api")
-  console.log(URL_API);
-  const URL = 'https://8000-liviuciuca-frameworksan-ghwuf4drqno.ws-eu75.gitpod.io'
+  //they don`t work
+  // const DEFAULT_API = '/api/v1';  // default to current http(s)://currentHost:currentPort/api/v1'
+	// const urlParams = new URLSearchParams(window.location.search);
+	// const urlAPI = (urlParams.get('api') || DEFAULT_API).replace(/\/$/, '');  // Get api url (and remove trailing slash if present)
+
+  // var host = window.location.host; 
+  // console.log('current URL 👉️', host);
+  // let serverURL = host.replace("8001", "8000");
+  // console.log('server URL 👉️' , serverURL)
+  
+
+  const URL = 'https://8000-liviuciuca-frameworksan-ghwuf4drqno.ws-eu77.gitpod.io'
 
   
   const getItems = () => {
@@ -50,21 +59,21 @@ export const Items = (submitHandler) => {
   useEffect(() =>{
     deleteItems();
     getItems();
-    
+   
     // submit_btn dependency array means this effect will only run once when btn is clicked
   }, [delete_btn, submitHandler]);
 
   // https://beta.reactjs.org/learn // scrolling down to use state and rendering list
   //displaying the items in a list, clicking on them sets the selected item
   const displayItems = items.map(item =>  
-    <li class="pure-u-1 pure-u-md-1-5 pure-u-sm-2-5 "  key={item.id}>
+    <li class="pure-u-1 pure-u-lg-1-5 pure-u-md-2-5 "  key={item.id}>
      <details className="input" data-field="id">
         <summary onClick={() => {
           setSelected(selected ? 0 : item.id);
           }}>
           {item.user_id}
-          <div class="pure-u-1"/>
-            <button class="pure-button" data-action="delete" onClick={() =>{
+          <div />
+            <button className="pure-button" data-action="delete" onClick={() =>{
              setDelete_btn(delete_btn ? false : true);
             }}>
              Delete
@@ -74,18 +83,20 @@ export const Items = (submitHandler) => {
           <p>Description: {item.description}</p>
           <p>Lat: {item.lat}</p>
           <p>Lon: {item.lon}</p>
-          <img class="pure-img" src={item.image} />
+          <img class="pure-img" alt="altProp" src={item.image} />
           <p>Date: {item.date_from}</p>      
       </details>  
     </li>
     );
 
   return (
-  <div class="pure-g">
-    <h2> Output </h2>
-      <ul>
+  <div class="pure-g pure-g pure-u-1 pure-u-md-3-5 parent_second_class">
+    <div class="second_class">
+      <h2> Output </h2>
+       <ul>
         {displayItems}
-      </ul>  
+       </ul>  
+      </div>
   </div>
   );
 }

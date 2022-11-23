@@ -7,12 +7,23 @@ Technical Report
 Server Framework Features
 -------------------------
 
-### (name of Feature 1)
+### Middleware Support
 
-(Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
+For the purpose of providing functionality and performing data checks, middleware enables the addition of pre- and post-processing to requests and responses, it essentially wraps around existing code.
+
+```Typescript
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  //enables cors
+  app.enableCors({
+    methods: ['GET','POST','DELETE']
+});
+}
+bootstrap();
+```
 (Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+
+- [NestJs middleware] (https://docs.nestjs.com/middleware#middleware)
 
 
 ### (name of Feature 2)
