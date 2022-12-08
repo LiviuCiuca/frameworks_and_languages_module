@@ -25,7 +25,8 @@ export class PostItems extends Component {
   submitHandler = (e) => {
     //e.preventDefault()
 
-    fetch('https://8000-liviuciuca-frameworksan-ghwuf4drqno.ws-eu77.gitpod.io/item', {
+    //posting data at endpoint /item
+    fetch('https://8000-liviuciuca-frameworksan-jlo06whj1tw.ws-eu77.gitpod.io'+'/item', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(this.state)
@@ -35,6 +36,7 @@ export class PostItems extends Component {
   }
   
   //line 36 exports handler to add dependency for useEffect in getItems file
+  //https://purecss.io/forms/  , https://purecss.io/buttons/
   render() {
     <Items data={this.submitHandler} />
     

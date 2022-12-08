@@ -10,23 +10,25 @@ export const Items = (submitHandler) => {
   const [errorMessage, setErrorMessage] = useState(null);
  
   //they don`t work
-  // const DEFAULT_API = '/api/v1';  // default to current http(s)://currentHost:currentPort/api/v1'
-	// const urlParams = new URLSearchParams(window.location.search);
-	// const urlAPI = (urlParams.get('api') || DEFAULT_API).replace(/\/$/, '');  // Get api url (and remove trailing slash if present)
+    // const DEFAULT_API = '/api/v1';  // default to current http(s)://currentHost:currentPort/api/v1'
+	  // const urlParams = new URLSearchParams(window.location.search);
+	  // const urlAPI = (urlParams.get('api') || DEFAULT_API).replace(/\/$/, '');  // Get api url (and remove trailing slash if present)
 
-  // var host = window.location.host; 
+  // const host = window.location.host; 
   // console.log('current URL 👉️', host);
-  // let serverURL = host.replace("8001", "8000");
+  // var serverURL = host.replace("8001", "8000");
   // console.log('server URL 👉️' , serverURL)
   
 
-  const URL = 'https://8000-liviuciuca-frameworksan-ghwuf4drqno.ws-eu77.gitpod.io'
+  //this needs to be copy pasted and also in the postItem
+  const URL = 'https://8000-liviuciuca-frameworksan-jlo06whj1tw.ws-eu77.gitpod.io'
 
   
   const getItems = () => {
     fetch(URL +'/items')
       .then(response => response.json())
       .then(data => {
+        //adds items to my array
         setItems(data)
         console.log(data);
 
@@ -37,7 +39,8 @@ export const Items = (submitHandler) => {
   };
 
   const deleteItems = () =>{
-    fetch( URL+ '/item/'+selected, { method: 'DELETE' })
+    fetch(URL+ '/item/'+selected, {
+      method: 'DELETE',})
     .then(async response => {
       const data = await response.json();
 
@@ -56,11 +59,13 @@ export const Items = (submitHandler) => {
   });
   }
 
+  //https://reactjs.org/docs/hooks-effect.html
+  // every click on buttons resets/runs the following functions
   useEffect(() =>{
     deleteItems();
     getItems();
    
-    // submit_btn dependency array means this effect will only run once when btn is clicked
+    // dependency array means this effect will only run once when btn is clicked
   }, [delete_btn, submitHandler]);
 
   // https://beta.reactjs.org/learn // scrolling down to use state and rendering list

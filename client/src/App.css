@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
-
+/* Referance 
+https://purecss.io/buttons/ */
   :root {
     --font-style: 'Nunito Sans', sans-serif;
   }
@@ -28,13 +29,7 @@
     
   }
 
-  .first_class h1 {
-    margin: 0 0 30px;
-    color: rgb(243, 231, 231);
-    text-align: center;
-  }
-
-  .pure-g h2 {
+  .first_class h1, .pure-g h2 {
     margin: 0 0 30px;
     color: rgb(243, 231, 231);
     text-align: center;

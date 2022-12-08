@@ -7,6 +7,7 @@ COPY package*.json ./
 
 # Install app dependencies
 RUN npm install
+RUN npm i -g @nestjs/cli
 RUN  npm install class-transformer
 
 # Bundle app source
