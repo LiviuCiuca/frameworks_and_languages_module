@@ -7,6 +7,7 @@ export class PostItems extends Component {
   constructor(props) {
     super(props);
 
+    
     this.state = {
       user_id: '',
       keywords: '',
@@ -24,9 +25,10 @@ export class PostItems extends Component {
 
   submitHandler = (e) => {
     //e.preventDefault()
-
+    
+    const URL = 'https://8000-liviuciuca-frameworksan-su70b9at5lk.ws-eu77.gitpod.io'
     //posting data at endpoint /item
-    fetch('https://8000-liviuciuca-frameworksan-jlo06whj1tw.ws-eu77.gitpod.io'+'/item', {
+    fetch(`${URL}/item`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(this.state)

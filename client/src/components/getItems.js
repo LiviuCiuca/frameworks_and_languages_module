@@ -9,7 +9,9 @@ export const Items = (submitHandler) => {
   const [status, setStatus] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
  
-  //they don`t work
+                                            //they don`t work
+  // referance
+  // https://github.com/calaldees/frameworks_and_languages_module/blob/main/docs/assignment_hints.md
     // const DEFAULT_API = '/api/v1';  // default to current http(s)://currentHost:currentPort/api/v1'
 	  // const urlParams = new URLSearchParams(window.location.search);
 	  // const urlAPI = (urlParams.get('api') || DEFAULT_API).replace(/\/$/, '');  // Get api url (and remove trailing slash if present)
@@ -18,28 +20,41 @@ export const Items = (submitHandler) => {
   // console.log('current URL 👉️', host);
   // var serverURL = host.replace("8001", "8000");
   // console.log('server URL 👉️' , serverURL)
+  // return the correct string , but gives error if used something like " < , <!docType element is not json" same with urlAPI
   
 
-  //this needs to be copy pasted and also in the postItem
-  const URL = 'https://8000-liviuciuca-frameworksan-jlo06whj1tw.ws-eu77.gitpod.io'
+  // after docker make`s 
+  // this needs to be copy paste and also in the postItem , then everything should work
+  const URL = 'https://8000-liviuciuca-frameworksan-su70b9at5lk.ws-eu77.gitpod.io'
 
   
   const getItems = () => {
-    fetch(URL +'/items')
-      .then(response => response.json())
+    fetch(`${URL}/items`)
+      .then((response) => {
+        if(!response.ok) {
+           // get error message from response status
+          const error =  response.status;
+          return Promise.reject(error);
+          }
+          return response.json()
+        })
       .then(data => {
         //adds items to my array
         setItems(data)
         console.log(data);
 
         // resets the states 
-      setDelete_btn(false);
-      setSelected(0);
-      });
+        setDelete_btn(false);
+        setSelected(0);
+      })
+      .catch(error => {
+        setErrorMessage(error);
+        console.error('There was an error!', errorMessage);
+    })
   };
-
+  
   const deleteItems = () =>{
-    fetch(URL+ '/item/'+selected, {
+    fetch(`${URL}/item/${selected}`, {
       method: 'DELETE',})
     .then(async response => {
       const data = await response.json();
@@ -48,10 +63,11 @@ export const Items = (submitHandler) => {
       if (!response.ok) {
           // get error message from body or default to response status
           const error = (data && data.message) || response.status;
-          console.log(error);
           return Promise.reject(error);
       }
+      // delete output
       setStatus('Delete successful');
+      console.log(status);
   })
   .catch(error => {
       setErrorMessage(error);
@@ -106,3 +122,5 @@ export const Items = (submitHandler) => {
   );
 }
 
+// error control referance
+//https://www.freecodecamp.org/news/how-to-consume-rest-apis-in-react/
